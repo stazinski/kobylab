@@ -1,5 +1,5 @@
 ---
-title: This is a test
+title: Bibi Netanyahu HELP ME PLEASE!
 authors: Stas
 journal: Test Journal
 year: 2026
