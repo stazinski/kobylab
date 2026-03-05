@@ -1,17 +1,20 @@
 backend:
   name: git-gateway
-  branch: main # Oder dein Haupt-Branch-Name
+  branch: main
 
-media_folder: "images" # Wo Bilder gespeichert werden
+media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "blog"
-    label: "Blogpost"
-    folder: "_posts" # Hier werden die Dateien gespeichert
+  - name: "publications"
+    label: "Publikationen"
+    folder: "content/publications"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Datum", name: "date", widget: "datetime"}
-      - {label: "Inhalt", name: "body", widget: "markdown"}
+      - {label: "Autoren", name: "authors", widget: "string"}
+      - {label: "Journal", name: "journal", widget: "string"}
+      - {label: "Jahr", name: "year", widget: "number"}
+      - {label: "Link / DOI", name: "link", widget: "string", required: false}
+      - {label: "Kurzbeschreibung (optional)", name: "body", widget: "markdown", required: false}
