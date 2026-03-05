@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rachmilewitz Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<svg style="position:absolute;width:0;height:0;">
+<defs>
+  <g id="macrophage">
+    <circle cx="30" cy="30" r="22" fill="currentColor" opacity="0.4"/>
+    <circle cx="30" cy="30" r="12" fill="currentColor" opacity="0.2"/>
+    <circle cx="12" cy="22" r="8" fill="currentColor" opacity="0.25"/>
+    <circle cx="48" cy="24" r="7" fill="currentColor" opacity="0.2"/>
+    <circle cx="22" cy="48" r="6" fill="currentColor" opacity="0.2"/>
+    <circle cx="42" cy="44" r="8" fill="currentColor" opacity="0.15"/>
+  </g>
+  <g id="dna">
+    <path d="M10 0C25 15,-5 35,10 50C25 65,-5 85,10 100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.45"/>
+    <path d="M30 0C15 15,45 35,30 50C15 65,45 85,30 100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.45"/>
+    <line x1="13" y1="12" x2="27" y2="12" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+    <line x1="8" y1="25" x2="32" y2="25" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+    <line x1="13" y1="38" x2="27" y2="38" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+    <line x1="13" y1="62" x2="27" y2="62" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+    <line x1="8" y1="75" x2="32" y2="75" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+    <line x1="13" y1="88" x2="27" y2="88" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+  </g>
+  <g id="foci">
+    <circle cx="5" cy="8" r="3" fill="currentColor" opacity="0.3"/>
+    <circle cx="22" cy="3" r="2" fill="currentColor" opacity="0.2"/>
+    <circle cx="15" cy="18" r="4" fill="currentColor" opacity="0.15"/>
+    <circle cx="35" cy="12" r="2.5" fill="currentColor" opacity="0.25"/>
+    <circle cx="30" cy="25" r="3" fill="currentColor" opacity="0.12"/>
+    <circle cx="45" cy="6" r="2" fill="currentColor" opacity="0.2"/>
+    <circle cx="50" cy="20" r="3.5" fill="currentColor" opacity="0.15"/>
+  </g>
+  <g id="network">
+    <circle cx="10" cy="10" r="3.5" fill="currentColor" opacity="0.2"/>
+    <circle cx="40" cy="5" r="2.5" fill="currentColor" opacity="0.15"/>
+    <circle cx="25" cy="30" r="4" fill="currentColor" opacity="0.18"/>
+    <circle cx="55" cy="25" r="3" fill="currentColor" opacity="0.12"/>
+    <circle cx="60" cy="45" r="2.5" fill="currentColor" opacity="0.15"/>
+    <circle cx="15" cy="50" r="3.5" fill="currentColor" opacity="0.1"/>
+    <line x1="10" y1="10" x2="40" y2="5" stroke="currentColor" stroke-width="0.7" opacity="0.1"/>
+    <line x1="10" y1="10" x2="25" y2="30" stroke="currentColor" stroke-width="0.7" opacity="0.1"/>
+    <line x1="40" y1="5" x2="55" y2="25" stroke="currentColor" stroke-width="0.7" opacity="0.1"/>
+    <line x1="25" y1="30" x2="55" y2="25" stroke="currentColor" stroke-width="0.7" opacity="0.1"/>
+    <line x1="55" y1="25" x2="60" y2="45" stroke="currentColor" stroke-width="0.7" opacity="0.1"/>
+  </g>
+</defs>
+</svg>
+
+<nav id="topnav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Rachmilewitz <span>Lab</span></a>
+    <ul class="nav-links" aria-label="Primary">
+      <li><a href="#home" class="active" data-page="home">Home</a></li>
+      <li><a href="#research" data-page="research">Research</a></li>
+      <li><a href="#pub" data-page="pub">Publications</a></li>
+      <li><a href="#team" data-page="team">Team</a></li>
+      <li><a href="#contact" data-page="contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="Open menu">Menu</button>
+    <div class="nav-panel" id="navPanel" role="menu" aria-label="Mobile">
+      <a href="#home" data-page="home" role="menuitem">Home</a>
+      <a href="#research" data-page="research" role="menuitem">Research</a>
+      <a href="#pub" data-page="pub" role="menuitem">Publications</a>
+      <a href="#team" data-page="team" role="menuitem">Team</a>
+      <a href="#contact" data-page="contact" role="menuitem">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page visible" id="page-home">
+
+  <section class="hero">
+    <svg class="bio-svg" style="right:30px;top:20px;width:300px;height:300px;opacity:0.035;animation:gentlePulse 10s ease infinite;">
+      <use href="#macrophage" transform="translate(60,50) scale(3)"/>
+    </svg>
+    <svg class="bio-svg" style="left:-20px;bottom:-10px;width:100px;height:200px;opacity:0.03;">
+      <use href="#dna" transform="scale(1.6,1.8)"/>
+    </svg>
+
+    <div class="section-label">The Hebrew University of Jerusalem · Hadassah Medical Center</div>
+
+    <h1>Immunity as Quality Control</h1>
+
+    <div class="reading-text" style="color: var(--text-secondary); font-size: 20px; position:relative; z-index:2; margin-bottom: 32px;">
+      <p>We study how macrophages sense cellular conditions and maintain tissue homeostasis and how cancer hijacks this system to resist therapy.</p>
+    </div>
+
+    <div class="reading-text" style="color: var(--text-secondary); font-size: 16px; position:relative; z-index:2; margin-bottom: 48px;">
+      <p style="margin-bottom: 16px;">Our work revealed that macrophages do more than fight infection. They function as a quality control system for tissues by sensing cellular stress and releasing signals that promote DNA repair and recovery. This mechanism, which we termed macrophage-assisted DNA repair, shows how immune cells actively support tissue resilience after genotoxic damage.</p>
+      
+      <p>Our current research investigates how tumors exploit these protective pathways. We study how macrophage signaling shapes therapy resistance, how ferroptotic cell death interacts with immune surveillance, and how these processes influence cancer evolution.</p>
+    </div>
+
+    <div class="reading-text" style="position:relative; z-index:2; padding-top: 20px; border-top: 1px solid var(--border);">
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+        <strong>The Rachmilewitz Lab</strong>, led by Prof. Jacob Rachmilewitz since 2000, is based at the Gene Therapy Institute at Hadassah Medical Center, Faculty of Medicine, Hebrew University of Jerusalem.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section class="section" style="overflow:hidden;">
+    <svg class="bio-svg" style="right:10px;top:30px;width:200px;height:140px;opacity:0.03;">
+      <use href="#network" transform="scale(2.8)"/>
+    </svg>
+
+    <div class="pillars-grid">
+      
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 4c3 3 0 7 3 10s5 7 8 6" opacity="0.3"/>
+            <path d="M12 4c-3 3 0 7-3 10"/>
+            <path d="M15 11l3-3 3 3"/>
+            <circle cx="15" cy="8" r="4" fill="currentColor" fill-opacity="0.2" stroke="none"/>
+          </svg>
+        </div>
+        <h3>1. DNA Repair &amp; Cancer Resistance</h3>
+        <div class="card-paras">
+          <p>Macrophages release HB-EGF to help damaged cells repair DNA breaks.</p>
+          <p>We study how this repair support creates epigenetic memory in lung cancer cells.</p>
+          <p>This mechanism may help explain why tumors become resistant to therapy.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="8" cy="12" r="5" fill="currentColor" fill-opacity="0.2"/>
+            <path d="M16 7a5 5 0 1 0 0 10" stroke-dasharray="2 2"/>
+            <path d="M11 12h3"/>
+            <circle cx="16" cy="12" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3>2. Macrophages &amp; Ferroptosis</h3>
+        <div class="card-paras">
+          <p>Macrophages can rescue stressed cells from ferroptotic death through direct contact.</p>
+          <p>We investigate how immune cells interfere with ferroptosis in tumor environments.</p>
+          <p>Understanding this interaction may reveal why ferroptosis-based therapies sometimes fail.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 5l4 14M10 5L6 19"/>
+            <path d="M16 5l2 7m0 0l2-7m-2 7v7" opacity="0.4" stroke-dasharray="2 2"/>
+            <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3>3. Loss of Y Chromosome in Lung Cancer</h3>
+        <div class="card-paras">
+          <p>Loss of the Y chromosome is enriched in aggressive lung tumors and alters chromatin regulation.</p>
+          <p>We study how LOY affects DNA damage repair, ferroptosis sensitivity, and the emergence of therapy-persistent cells.</p>
+          <p>This may explain why male lung cancer patients often have poorer treatment outcomes.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="featured-pub">
+      <div class="fp-content">
+        <div class="fp-label">Latest Publication · December 2025</div>
+        <h3>Macrophages rescue cells from ferroptotic death</h3>
+        <div class="fp-authors">Hefetz R, Lianski S, Ghantous L, Volman Y, Sadovsky Y, Beharier O &amp; Rachmilewitz J</div>
+        <div class="fp-journal">Cell Death &amp; Disease · 17, 66 (2026)</div>
+        <a href="https://www.nature.com/articles/s41419-025-08277-6" class="fp-btn" target="_blank" rel="noopener noreferrer">Read in Nature →</a>
+      </div>
+      <div class="fp-visual">
+        <svg style="width:160px;height:160px;color:white;opacity:0.07;animation:gentleFloat 8s ease infinite;">
+          <use href="#macrophage" transform="translate(20,20) scale(2)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-alt); position:relative; overflow:hidden;">
+    <svg class="bio-svg" style="right:40px;bottom:30px;width:160px;height:100px;opacity:0.03;">
+      <use href="#foci" transform="scale(3)"/>
+    </svg>
+    <div class="section-label">Open Questions</div>
+    <h2 style="margin-bottom: 40px;">What we are asking now</h2>
+    <div class="focus-list reading-text">
+      <div class="focus-item">
+        <div class="focus-number">01</div>
+        <p>Can we erase the epigenetic memory that makes cancer cells resistant?</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-number">02</div>
+        <p>How do macrophages decide whether to rescue or ignore ferroptotic cells?</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-number">03</div>
+        <p>Does Y chromosome loss drive therapy resistance in male cancer patients?</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-research">
+  <section class="section">
+    <div class="section-label">Research Program</div>
+    <h1>Immunity as Quality Control</h1>
+    <p class="section-intro reading-text" style="font-size: 20px; margin-top: 24px;">
+      Across all our work, a unifying idea emerges: macrophages act as a quality control system for tissues. They sense the condition of surrounding cells, whether healthy, stressed, damaged, or dying, and respond with signals aimed at restoring homeostasis. Our research traces how this quality control role operates at the molecular level, and what happens when cancer co-opts it.
+    </p>
+
+    <div class="research-article">
+      
+      <div class="research-block">
+        <div class="research-block-title">
+          <div class="research-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+              <path d="M6 4c3 3 0 7 3 10s5 7 8 6" opacity="0.3"/>
+              <path d="M12 4c-3 3 0 7-3 10"/>
+              <path d="M15 11l3-3 3 3"/>
+              <circle cx="15" cy="8" r="4" fill="currentColor" fill-opacity="0.2" stroke="none"/>
+            </svg>
+          </div>
+          <h3>1. Macrophage-Assisted DNA Repair &amp; Cancer Resistance</h3>
+        </div>
+        <div class="research-content reading-text">
+          <h4>The discovery</h4>
+          <p>We showed that macrophages detect oxidative stress in neighboring cells and release HB-EGF, which activates EGFR signaling and accelerates the resolution of DNA double-strand breaks. We call this "macrophage-assisted DNA repair", a mechanism where immune cells actively help tissues recover from genotoxic damage.</p>
+          
+          <figure style="margin: 40px 0;">
+            <img src="images/Fig1.png" alt="Diagram showing macrophage-assisted DNA repair" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
+            <figcaption style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5;">
+              <strong>Figure 1.</strong> Macrophages detect oxidative stress and release HB-EGF, which activates EGFR signaling to accelerate DNA double-strand break resolution.
+            </figcaption>
+          </figure>
+
+          <h4>From protection to resistance</h4>
+          <p>Our data shows that lung cancer cells treated with HB-EGF during genotoxic stress become better at repairing DNA when faced with subsequent damage. They proliferate faster and form more colonies, even weeks after the initial HB-EGF exposure. This suggests an "epigenetic memory" that primes cancer cells for resistance.</p>
+          
+          <h4>Current work with DKFZ</h4>
+          <p>In collaboration with Christoph Plass and Maria Llamazares Prada at the German Cancer Research Center, we are profiling the transcriptomic and epigenomic landscapes of these persister cells. Using RNA-seq, ATAC-seq, and single-cell approaches, we aim to identify the epigenetic modifications that underlie this acquired resistance and ultimately find ways to reverse it.</p>
+          
+          <h4>DDR and immune evasion</h4>
+          <p>We also discovered that the DNA damage response regulates expression of CD47, the "don't eat me" signal on cell surfaces. This links DNA repair directly to immune checkpoint biology and suggests that damaged cells actively modulate their visibility to the immune system.</p>
+          
+          <div class="key-pubs">
+            <h5>Key Publications</h5>
+            <ul>
+             
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" style="padding:0; margin: 40px 0;"><hr></div>
+
+      <div class="research-block">
+        <div class="research-block-title">
+          <div class="research-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width: 40px; height: 40px;">
+              <circle cx="8" cy="12" r="5" fill="currentColor" fill-opacity="0.2"/>
+              <path d="M16 7a5 5 0 1 0 0 10" stroke-dasharray="2 2"/>
+              <path d="M11 12h3"/>
+              <circle cx="16" cy="12" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>2. Macrophages &amp; Ferroptosis</h3>
+        </div>
+        <div class="research-content reading-text">
+          <h4>A new form of immune protection</h4>
+          <p>Ferroptosis, iron-dependent cell death driven by lipid peroxidation, has emerged as a promising way to kill therapy-resistant cancer cells. We found something unexpected: macrophages can rescue cells from ferroptosis.</p>
+          
+          <figure style="margin: 40px 0;">
+            <img src="images/Fig2.png" alt="Diagram of macrophage rescue from ferroptosis" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
+            <figcaption style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5;">
+              <strong>Figure 2.</strong> Macrophages co-cultured with cancer cells block ferroptosis through direct cell-to-cell contact.
+            </figcaption>
+          </figure>
+
+          <h4>What we showed</h4>
+          <p>Macrophages co-cultured with cancer cells block ferroptosis induced by GPX4 inhibitors or system Xc⁻ inhibition. This rescue requires direct cell-to-cell contact and depends on macrophage polarization: M1 macrophages lose this ability, while M2 macrophages retain it. Ferroptotic cells keep high levels of CD47 and do not expose phosphatidylserine, meaning the immune system receives a "don't eat me" signal instead of an "eat me" signal, creating a window for rescue.</p>
+          
+          <h4>Cancer and placenta</h4>
+          <p>In cancer, macrophages may provide an escape route from ferroptosis-based therapies. In pregnancy, macrophages protect trophoblasts from ferroptotic death in placental tissue, with relevance to preeclampsia.</p>
+          
+          <div class="key-pubs">
+            <h5>Key Publications</h5>
+            <ul>
+              <li>Hefetz et al., <em>Cell Death &amp; Disease</em> 2025</li>
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" style="padding:0; margin: 40px 0;"><hr></div>
+
+      <div class="research-block">
+        <div class="research-block-title">
+          <div class="research-visual" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+              <path d="M6 5l4 14M10 5L6 19"/>
+              <path d="M16 5l2 7m0 0l2-7m-2 7v7" opacity="0.4" stroke-dasharray="2 2"/>
+              <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>3. Loss of Y Chromosome in Lung Cancer</h3>
+        </div>
+
+        <div class="research-content reading-text">
+          <h4>Therapy persistence and clonal selection</h4>
+          <p>When tumors are treated with DNA-damaging therapies, most cells die, but a small subset persists and drives relapse. Tumors are heterogeneous, and therapy can enrich rare clones with intrinsic survival advantages. One such clonal feature is loss of the Y chromosome, a frequent somatic event in aging males that is enriched in aggressive lung adenocarcinoma and associated with poorer outcomes.</p>
+ 
+          <figure style="margin: 40px 0;">
+            <img src="images/Fig3.png" alt="Diagram showing clonal selection and therapy persistence driven by loss of Y chromosome in lung adenocarcinoma" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
+            <figcaption style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; line-height: 1.5;">
+              <strong>Figure 3.</strong> Loss of the Y chromosome (LOY) alters the tumor epigenome, driving the emergence of therapy-persistent clones while potentially creating new metabolic vulnerabilities.
+            </figcaption>
+          </figure>
+
+          <h4>From resistance to vulnerability</h4>
+          <p>Although therapy-persistent cells resist DNA damage, this does not mean they resist all forms of stress. Persistence is accompanied by metabolic remodeling, including altered redox balance and iron handling, which can increase sensitivity to ferroptosis. Resistance to DNA damage and sensitivity to ferroptosis can therefore coexist within the same cell population.</p>
+
+          <h4>Macrophages and the microenvironment</h4>
+          <p>DNA-damaging therapy also reprograms macrophages in the tumor microenvironment. This connects the LOY project to our core work on macrophage-assisted DNA repair and anti-ferroptotic activity, asking whether macrophage signaling contributes to the emergence of therapy-persistent LOY cells in lung adenocarcinoma.</p>
+
+          <div class="key-pubs" style="display: none;">
+            <h5>Key Publications</h5>
+            <ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="origins-sidebar reading-text">
+        <svg class="bio-svg" style="right:16px;top:16px;width:120px;height:80px;opacity:0.06;color:white;">
+          <use href="#foci" transform="scale(2.2)"/>
+        </svg>
+        <h3>Origins: Immune Tolerance</h3>
+        <p>Our earliest work focused on immune tolerance during pregnancy. We showed that antigen-presenting cells can be tolerized through direct cell-cell interaction, suppressing T cell activation. This shaped our thinking about macrophages as environmental sensors and led to everything that followed.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-pub">
+  <section class="section">
+    <div class="section-label">Publications</div>
+    <h2>Selected Works</h2>
+    <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 48px;" class="reading-text">
+      See <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Google Scholar</a> or the <a href="https://hospitals.ekmd.huji.ac.il/Hadassah/GeneTherapy/Pages/default.aspx" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none;">Hadassah Directory</a> for a full list.
+    </p>
+
+    <div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Macrophages rescue cells from ferroptotic death</div>
+          <div class="pub-authors"><strong>Hefetz R</strong>, Lianski S, Ghantous L, Volman Y, Sadovsky Y, Beharier O &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Cell Death &amp; Disease · 17, 66 (2026)</div>
+        </div>
+        <a href="https://www.nature.com/articles/s41419-025-08277-6" class="pub-link" target="_blank" rel="noopener noreferrer">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Anti-Ferroptotic Drugs Reduce sFlt-1 Release and Placenta Damage in Preeclampsia</div>
+          <div class="pub-authors">Lianski S, Mizrachi T, et al., <strong>Rachmilewitz J</strong>, et al.</div>
+          <div class="pub-journal">Hypertension · In Press</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">The DNA damage response pathway regulates the expression of the immune checkpoint CD47</div>
+          <div class="pub-authors">Ghantous L, Volman Y, Wald O, Stern E, Chajut A, Bremer E, Dranitzki Elhalel M &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Communications Biology · 7: 245</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2022</div>
+        <div>
+          <div class="pub-title">DNA damage alters EGFR signaling and reprograms cellular response via Mre-11</div>
+          <div class="pub-authors">Volman Y, <strong>Hefetz R</strong>, Galun E &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Scientific Reports · 12: 5760</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2020</div>
+        <div>
+          <div class="pub-title">Gut microbiota shape 'inflamm-aging' cytokines and account for age-dependent decline in DNA damage repair</div>
+          <div class="pub-authors">Guedj A, Volman Y, Geiger-Maor A, Nevo Y, Elgavish S, Galun E, Amsalem H &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Gut · 69: 1064–1075</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2016</div>
+        <div>
+          <div class="pub-title">Early age decline in DNA repair capacity in the liver</div>
+          <div class="pub-authors">Guedj A, Volman Y, Geiger-Maor A, et al. &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Aging (Albany NY) · 8: 3131–3146</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2015</div>
+        <div>
+          <div class="pub-title">Macrophages regulate the systemic response to DNA damage by a cell nonautonomous mechanism</div>
+          <div class="pub-authors">Geiger-Maor A, Guedj A, Saad Y, Even-Ram S, Smith Y, Galun E &amp; <strong>Rachmilewitz J</strong></div>
+          <div class="pub-journal">Cancer Research · 75: 2663–2673</div>
+        </div>
+        <a href="#" class="pub-link">Paper →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-team">
+  <section class="section">
+    <div class="section-label">Our Team</div>
+    <h2>People</h2>
+    <p class="reading-text" style="color: var(--text-secondary); margin-bottom: 64px;">
+      Based at the Gene Therapy Institute, Hadassah Medical Center, Faculty of Medicine, Hebrew University of Jerusalem.
+    </p>
+
+    <div class="team-grid" style="margin-bottom: 64px;">
+      <div class="team-card" style="grid-column: 1 / -1; display: flex; flex-wrap: wrap;">
+        <div class="team-photo" style="width: 260px; border-right: 1px solid var(--border); border-bottom: none; display:flex; align-items:center; justify-content:center; font-size:36px; font-weight:700; color:var(--accent); background:var(--accent-light);">
+          <img src="images/jacob-rachmilewitz.jpg" alt="Dr. Jacob Rachmilewitz" style="width: 100%; height: 100%; object-fit: cover; display: none;" onload="this.style.display='block'" onerror="this.nextElementSibling.style.display='flex'">
+          <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center;">JR</div>
+        </div>
+        <div class="team-info" style="flex: 1; padding: 40px;">
+          <h3 style="font-size: 24px; margin-bottom: 4px;">Dr. Jacob Rachmilewitz</h3>
+          <div class="team-role">Principal Investigator</div>
+          <p class="reading-text" style="margin-top: 16px;">
+            Principal investigator at the Gene Therapy Institute since 2000 and lecturer at the Hebrew University School of Medicine. His lab pioneered the concept of "macrophage-assisted DNA repair" and investigates how immune signaling shapes therapy resistance in cancer.
+          </p>
+          <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="mailto:rjacob@cc.huji.ac.il" style="color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none;">Email ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px;">Current Members</h3>
+    <div class="team-grid" style="margin-bottom: 64px;">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="images/ruth-hefetz.jpg" alt="Ruth Hefetz" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
+        </div>
+        <div class="team-info">
+          <h3>Ruth Hefetz</h3>
+          <div class="team-role">PhD Student</div>
+          <p>PhD student at the Gene Therapy Institute, Hadassah Medical Center, Faculty of Medicine, Hebrew University of Jerusalem.</p>
+          <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <a href="https://www.nature.com/articles/s41598-022-09779-5" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 13px; text-decoration: none;">Scientific Reports (2022) ↗</a>
+            <a href="https://www.nature.com/articles/s41419-025-08277-6" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 13px; text-decoration: none;">Cell Death &amp; Disease (2025) ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="images/anastasia-weiner.jpg" alt="Anastasia Weiner" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
+        </div>
+        <div class="team-info">
+          <h3>Anastasia Weiner</h3>
+          <div class="team-role">BSc Student</div>
+          <p>Biomedical Science, Faculty of Medicine, Hebrew University of Jerusalem.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px;">Former Members</h3>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo" style="height: 160px; aspect-ratio: auto;"></div>
+        <div class="team-info">
+          <h3>Former Member Name</h3>
+          <div class="team-role">Role</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-contact-box">
+      <h3>Get in touch</h3>
+      <div class="contact-details">
+        <strong>DR. JACOB RACHMILEWITZ</strong>
+        Gene Therapy Institute, Hadassah Medical Center<br />
+        Faculty of Medicine, The Hebrew University of Jerusalem<br /><br />
+        <a href="mailto:rjacob@cc.huji.ac.il">rjacob@cc.huji.ac.il</a><br />
+        +972-2-677-7848<br /><br />
+        <a href="https://hospitals.ekmd.huji.ac.il/Hadassah/GeneTherapy/Pages/default.aspx" target="_blank" rel="noopener noreferrer" style="font-weight: 600;">Publications (Hadassah Directory) ↗</a>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between;">
+      <div class="footer-logos">
+        <img src="images/HUJI_LogoEng_hor.png" alt="Hebrew University of Jerusalem" />
+        <img src="images/HadassahHospital2024.svg.png" alt="Hadassah Medical Center Logo" />
+        <img src="images/german-cancer-research-center-dkfz-logo-vector.svg" alt="German Cancer Research Center Logo"/>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const navPanel = document.getElementById('navPanel');
+  function closeMenu() { navPanel.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }
+  function toggleMenu() { const o = navPanel.classList.toggle('open'); navToggle.setAttribute('aria-expanded', o?'true':'false'); }
+  navToggle.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
+  document.addEventListener('click', e => { if (!navPanel.classList.contains('open')) return; if (!navPanel.contains(e.target) && !navToggle.contains(e.target)) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeMenu(); });
+  navPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
+
+  // Scroll-triggered nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('topnav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Page routing
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+    const t = document.getElementById('page-' + page);
+    if (t) t.classList.add('visible');
+    document.querySelectorAll('.nav-links a, .nav-panel a').forEach(a => {
+      a.classList.remove('active');
+      if (a.dataset.page === page) a.classList.add('active');
+    });
+    window.scrollTo(0, 0);
+  }
+  function handleRoute() {
+    const r = window.location.hash.replace('#','') || 'home';
+    if (r === 'contact') { closeMenu(); showPage('home'); setTimeout(() => document.getElementById('contact').scrollIntoView({behavior:'smooth'}), 100); return; }
+    if (['home','research','pub','team'].includes(r)) { closeMenu(); showPage(r); } else { closeMenu(); showPage('home'); }
+  }
+  window.addEventListener('hashchange', handleRoute);
+  document.addEventListener('DOMContentLoaded', handleRoute);
+</script>
+
+</body>
+</html>
