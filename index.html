@@ -656,7 +656,13 @@ async function loadPublications() {
         let body = "";
         const textParts = text.split('---');
         if (textParts.length >= 3) {
-          body = textParts.slice(2).join('---').trim().replace(/\n/g, '<br>'); // Zeilenumbrüche für das HTML-Fenster erhalten
+          body = textParts.slice(2).join('---').trim();
+          
+          // 1. Wandelt die Markdown-Bilder aus dem CMS in echte HTML-Bilder um (inkl. schönem Design)
+          body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; border-radius: 8px; margin: 20px 0; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">');
+          
+          // 2. Erhält die Zeilenumbrüche für den restlichen Text
+          body = body.replace(/\n/g, '<br>');
         }
 
         const pubElement = document.createElement('div');
