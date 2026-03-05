@@ -560,3 +560,60 @@
 
 </body>
 </html>
+
+<script>
+async function loadPublications() {
+  const container = document.getElementById('publications-list');
+  const repoOwner = "stazinski";
+  const repoName = "kobylab";
+  
+  try {
+    // 1. Liste der Dateien aus GitHub abrufen
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/content/publications`);
+    const files = await response.json();
+    
+    if (!Array.isArray(files)) {
+      container.innerHTML = "<p>Noch keine Publikationen vorhanden.</p>";
+      return;
+    }
+
+    container.innerHTML = ""; // Container leeren
+
+    // 2. Jede Datei einzeln laden und anzeigen
+    for (const file of files) {
+      if (file.name.endsWith('.md') || file.name.endsWith('.json')) {
+        const contentRes = await fetch(file.download_url);
+        const text = await contentRes.text();
+        
+        // Einfaches Parsing der CMS-Daten (Frontmatter)
+        const title = text.match(/title:\s*"(.*)"/)?.[1] || text.match(/title:\s*(.*)/)?.[1];
+        const authors = text.match(/authors:\s*"(.*)"/)?.[1] || "N/A";
+        const journal = text.match(/journal:\s*"(.*)"/)?.[1] || "";
+        const year = text.match(/year:\s*(.*)/)?.[1] || "";
+        const link = text.match(/link:\s*"(.*)"/)?.[1] || "#";
+
+        // HTML für den Eintrag erstellen
+        const pubElement = document.createElement('div');
+        pubElement.style.marginBottom = "20px";
+        pubElement.style.paddingBottom = "15px";
+        pubElement.style.borderBottom = "1px solid var(--border)";
+        
+        pubElement.innerHTML = `
+          <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${title}</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 5px;">${authors}</p>
+          <p style="font-size: 0.9rem;"><em>${journal}</em>, ${year} 
+             ${link !== "#" ? ` — <a href="${link}" target="_blank" style="color: var(--accent);">View Publication</a>` : ''}
+          </p>
+        `;
+        container.appendChild(pubElement);
+      }
+    }
+  } catch (error) {
+    console.error("Fehler beim Laden der Publikationen:", error);
+    container.innerHTML = "<p>Fehler beim Laden der Liste.</p>";
+  }
+}
+
+// Skript ausführen, wenn die Seite geladen wird
+document.addEventListener('DOMContentLoaded', loadPublications);
+</script>
